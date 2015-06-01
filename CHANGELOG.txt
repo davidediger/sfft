@@ -1,0 +1,22 @@
+# Version 0.1   June 6th, 2013 #################################################
+
+An initial release of the optimized SFFT library. The sourcecode is based on the
+original implementation (http://groups.csail.mit.edu/netmit/sFFT/). Different
+performance optimizations were applied.
+
+  - SFFT algorithm versions 1-3 were packed in a single library.
+  - The SFFT function calls were unified.
+  - Some performace evaluation tools were added (counting flops, measuring time,
+    etc.).
+
+Performance optimizations:
+  - Reduced Operations were possible.
+  - Seperation of planning- and execution-phase.
+  - SSE implementations of compute-itensive functions.
+  - Optimized FFTW calls (in-place transforms, multiple DFTs at once).
+  - Explicit complex arithmetic.
+  - Fixed loop counts in SFFT v3.
+  - Improved iteration scheme in inner loops.
+  - Interleaved data layout for inner loop outputs.
+  - OpenMP-based multi-threading possible when computing many sparse DFTs.
+  - Usage of std::unordered_map as result datatype.

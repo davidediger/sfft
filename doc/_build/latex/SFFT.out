@@ -1,0 +1,18 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{When Should I use the SFFT library?}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Target Platform}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Limitations and Known Bugs}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Disclaimer}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.5}{Credits}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.6}{Contact Information}{chapter.1}% 7
+\BOOKMARK [0][-]{chapter.2}{Installation}{}% 8
+\BOOKMARK [1][-]{section.2.1}{Prerequisites}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.2}{Compiling From Source and Installation}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.3}{Linking against the SFFT Library}{chapter.2}% 11
+\BOOKMARK [0][-]{chapter.3}{Usage}{}% 12
+\BOOKMARK [1][-]{section.3.1}{Computing Sparse DFTs}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.2}{SFFT Versions}{chapter.3}% 14
+\BOOKMARK [0][-]{chapter.4}{Development}{}% 15
+\BOOKMARK [1][-]{section.4.1}{Development and Benchmark Tools}{chapter.4}% 16
+\BOOKMARK [1][-]{section.4.2}{An Overview of the Sourcecode}{chapter.4}% 17
+\BOOKMARK [0][-]{chapter.5}{Indices and tables}{}% 18

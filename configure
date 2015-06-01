@@ -1,0 +1,61 @@
+#! /bin/sh
+# waf configure wrapper
+# based on http://code.google.com/p/waf/source/browse/configure
+
+CUR_DIR=$PWD
+
+#possible relative path
+WORKINGDIR=`dirname $0`
+cd $WORKINGDIR
+#abs path
+WORKINGDIR=`pwd`
+cd $CUR_DIR
+WAF=$WORKINGDIR/tools/waf
+
+# Generates a Makefile. Requires that $WAF is set.
+#
+generateMakefile()
+{
+	cat > Makefile << EOF
+#!/usr/bin/make -f
+# Waf Makefile wrapper
+WAF_HOME=$CUR_DIR
+
+all:
+	@$WAF build
+
+all-debug:
+	@$WAF -v build
+
+all-progress:
+	@$WAF -p build
+
+install:
+	$WAF install --yes;
+
+uninstall:
+	$WAF uninstall
+
+clean:
+	@$WAF clean
+
+distclean:
+	@$WAF distclean
+	@-rm -rf build
+	@-rm -f Makefile
+
+check:
+	@$WAF check
+
+dist:
+	@$WAF dist
+
+.PHONY: clean dist distclean check uninstall install all
+
+EOF
+}
+
+generateMakefile
+
+"${WAF}" configure $*
+exit $?

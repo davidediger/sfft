@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; SFFT 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="SFFT 0.1 documentation" href="index.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Welcome to the SFFT Library’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="headertitle"><a
+          href="index.html">SFFT 0.1 documentation</a></div>
+        <div class="rel">
+          <a href="index.html" title="Welcome to the SFFT Library’s documentation!"
+             accesskey="P">previous</a> |
+          <a href="installation.html" title="Installation"
+             accesskey="N">next</a> |
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>The <em>Sparse Fast Fourier Transform</em> is a DFT algorithm specifically designed
+for signals with a sparse frequency domain. This library is a high-performance
+C++ implementation of versions 1, 2, and 3 of the different SFFT variants.</p>
+<div class="section" id="when-should-i-use-the-sfft-library">
+<h2>When Should I use the SFFT library?<a class="headerlink" href="#when-should-i-use-the-sfft-library" title="Permalink to this headline">¶</a></h2>
+<p>You should use the SFFT library when you want to compute the <a class="reference external" href="http://en.wikipedia.org/wiki/Discrete_Fourier_transform">Discrete Fourier
+Transform</a> of a signal and only a few frequency components
+occur in the signal. Your signal may be noisy or not, but currently there are
+some limitations for noisy signals (see <a class="reference internal" href="#current-state"><em>Limitations and Known Bugs</em></a>).</p>
+</div>
+<div class="section" id="target-platform">
+<h2>Target Platform<a class="headerlink" href="#target-platform" title="Permalink to this headline">¶</a></h2>
+<p>The SFFT library was optimized to run on modern x86 desktop CPUs with SSE
+support. Optionally the implementation can use the Intel IPP library, which is
+only available on Intel platforms.</p>
+</div>
+<div class="section" id="limitations-and-known-bugs">
+<span id="current-state"></span><h2>Limitations and Known Bugs<a class="headerlink" href="#limitations-and-known-bugs" title="Permalink to this headline">¶</a></h2>
+<p>The SFFT library features implementations of SFFT v1, v2, and v3. SFFT v1 and
+v2 currently only work with a few specific input parameters. SFFT v3 cannot
+handle signals with noise.</p>
+<p>There are no known bugs so far.</p>
+</div>
+<div class="section" id="disclaimer">
+<h2>Disclaimer<a class="headerlink" href="#disclaimer" title="Permalink to this headline">¶</a></h2>
+<p>The current SFFT implementation is in an experimental state. It is NOT
+intended to be used as a drop-in replacement for the FFT library of your choice.
+Be prepared to find bugs. There is absolutely NO WARRANTY for the correct
+functioning of this software.</p>
+</div>
+<div class="section" id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<p>The original SFFT sourcecode was developed by Haitham Hassanieh, Piotr Indyk,
+Dina Katabi, and Eric Price at the Computer Science and Artifical Intelligence
+Lab at MIT. The original sourcecode and contact information can be found at
+their website <a class="reference external" href="http://groups.csail.mit.edu/netmit/sFFT/">Sparse Fast Fourier Transform Website</a>.</p>
+<p>Performance optimizations were developed by Jörn Schumacher
+as part of his <a class="reference external" href="http://www.spiral.net/software/sfft.html">Master Thesis Project</a> at the
+Computer Science Department of ETH Zurich in 2013, under the supervision of
+Prof. <a class="reference external" href="http://www.inf.ethz.ch/personal/markusp/">Markus Püschel</a>.</p>
+</div>
+<div class="section" id="contact-information">
+<h2>Contact Information<a class="headerlink" href="#contact-information" title="Permalink to this headline">¶</a></h2>
+<p>If you are interested in the theory behind the Sparse Fast Fourier Transform,
+contact the inventors of the SFFT, Haitham Hassanieh, Piotr Indyk, Dina Katabi,
+and Eric Price, at their <a class="reference external" href="http://groups.csail.mit.edu/netmit/sFFT/">Sparse Fast Fourier Transform Website</a>.</p>
+<p>If you are interested in performance optimizations that were applied, contact
+Jörn Schumacher at <a class="reference external" href="mailto:joerns&#37;&#52;&#48;student&#46;ethz&#46;ch">joerns<span>&#64;</span>student<span>&#46;</span>ethz<span>&#46;</span>ch</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table Of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#when-should-i-use-the-sfft-library">When Should I use the SFFT library?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#target-platform">Target Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#limitations-and-known-bugs">Limitations and Known Bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#disclaimer">Disclaimer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#credits">Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contact-information">Contact Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+</ul>
+
+          <h3 style="margin-top: 1.5em;">Search</h3>
+          <form class="search" action="search.html" method="get">
+            <input type="text" name="q" />
+            <input type="submit" value="Go" />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+          </form>
+          <p class="searchtip" style="font-size: 90%">
+            Enter search terms or a module, class or function name.
+          </p>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="index.html" title="Welcome to the SFFT Library’s documentation!"
+             >previous</a> |
+          <a href="installation.html" title="Installation"
+             >next</a> |
+          <a href="genindex.html" title="General Index"
+             >index</a>
+            <br/>
+            <a href="_sources/introduction.txt"
+               rel="nofollow">Show Source</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

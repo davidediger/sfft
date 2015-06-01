@@ -1,0 +1,9 @@
+The original SFFT sourcecode was developed by Haitham Hassanieh, Piotr Indyk,
+Dina Katabi, and Eric Price at the Computer Science and Artifical Intelligence
+Lab at MIT. The original sourcecode and contact information can be found at 
+their website http://groups.csail.mit.edu/netmit/sFFT/.
+
+Performance optimizations were developed by Jörn Schumacher
+<joerns@student.ethz.ch> as part of his master thesis project at the Computer
+Science Department of ETH Zurich in 2013, under the supervision of Prof. Markus
+Püschel (http://www.inf.ethz.ch/personal/markusp/).
