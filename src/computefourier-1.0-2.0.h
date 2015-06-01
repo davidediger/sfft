@@ -33,8 +33,8 @@
 #define OPTIMIZE_FFTW 0
 
 //Comments located in the cc file.
-sfft_output
-outer_loop(sfft_v1v2_data * data, complex_t * origx, int n,
+complex_t *
+outer_loop(sfft_v1v2_data * data, complex_t * ans, complex_t * origx, int n,
            const Filter & filter, const Filter & filter_Est, int B2,
            int num, int B, int W_Comb, int Comb_loops, int loop_threshold,
            int location_loops, int loops);

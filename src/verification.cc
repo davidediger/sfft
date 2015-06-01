@@ -31,15 +31,15 @@ int main(int argc, char **argv)
   simulation sim(argc, argv);
 
   int n = sim.get_n();
-  complex_t *f = sim.frequencies();
-  sfft_output ans = sim.run();
+  complex_t * f = sim.frequencies();
+  complex_t * ans = sim.run();
 
   for (int i = 0; i < n; i++)
     {
       if (cabs(f[i]) > NOISE_THRESHOLD)
         {
           // Was the frequency recovered?
-          if (ans.find(i) == ans.end())
+          if (creal(ans[i]) == 0 && cimag(ans[i] == 0))
             {
               std::cout << "ERROR: Frequency " << i
                         << " was not recovered!\n";

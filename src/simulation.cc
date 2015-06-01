@@ -111,11 +111,11 @@ void simulation::generate_input()
   fftw_dft(x, n, x_f, 1);
 }
 
-sfft_output simulation::run()
+complex_t * simulation::run()
 {
-  sfft_output result;
+  complex_t * result = (complex_t *) malloc (this->n * sizeof(complex_t));
   for (int i = 0; i < repetitions; i++)
-    sfft_exec(this->plan, this->x, &result);
+    sfft_exec(this->plan, this->x, result);
 
   return result;
 }

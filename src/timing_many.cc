@@ -120,6 +120,18 @@ static complex_t **generate_input(int n, int k, int num_inputs)
   return x;
 }
 
+static complex_t **allocate_output(int n, int num_inputs)
+{
+  complex_t **x = (complex_t **) malloc(num_inputs * sizeof(complex_t *));
+
+  for (int t = 0; t < num_inputs; t++)
+    {
+      x[t] = (complex_t *) calloc(n, sizeof(complex_t));
+    }
+
+  return x;
+}
+
 int main(int argc, char **argv)
 {
   int n = 1 << 18;
@@ -158,7 +170,7 @@ int main(int argc, char **argv)
     }
 
   complex_t **x = generate_input(n, k, num_inputs);
-  sfft_output *out = new sfft_output[num_inputs];
+  complex_t **out = allocate_output(n, num_inputs);
 
   CALLGRIND_START_INSTRUMENTATION;
 
@@ -169,7 +181,7 @@ int main(int argc, char **argv)
       #pragma omp parallel for
       for (int i = 0; i < num_inputs; ++i)
         {
-          sfft_exec(plans[i], x[i], out + i);
+          sfft_exec(plans[i], x[i], out[i]);
         }
     }
   else

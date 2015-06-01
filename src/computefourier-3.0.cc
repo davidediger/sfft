@@ -782,7 +782,7 @@ estimate_freq_mansour_loops2(sfft_v3_data * data, int BUCKETS,
 */
 
 void
-alternate_fft(sfft_v3_data * data, sfft_output * out, complex_t * origx,
+alternate_fft(sfft_v3_data * data, complex_t * out, complex_t * origx,
               int n, int k, int W_Man, int Man_loops, int B1, int Wind1,
               int Gauss_loops1, complex_t * filtert1, complex_t * filterf1,
               int B2, int Wind2, int Gauss_loops2, complex_t * filtert2,
@@ -795,7 +795,7 @@ alternate_fft(sfft_v3_data * data, sfft_output * out, complex_t * origx,
   complex_t *GAUSS_SAMP = tl_data->gauss_samples;
   complex_t *GAUSS_SAMP_PERM = tl_data->gauss_perm_samples;
 
-  sfft_output & ans = *out;
+  sfft_output ans;
 
   int a = 0;
   while (gcd(a, n) != 1)
@@ -1076,6 +1076,13 @@ alternate_fft(sfft_v3_data * data, sfft_output * out, complex_t * origx,
     }
 
   PROFILING_END_SECTION();
+  
+  for (__typeof(ans.begin())it = ans.begin(); it != ans.end(); it++)
+    {
+      key = it->first;
+      value = it->second;
+      out[key] = value;
+    }
 
   return;
 }

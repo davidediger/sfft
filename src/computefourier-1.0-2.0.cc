@@ -337,17 +337,16 @@ inner_loop_locate(sfft_v1v2_data * data, complex_t * origx, int n,
   We estimate each coordinate as the median (independently in real and
   imaginary axes) of its images in the rows of x_samp.
  */
-sfft_output
+complex_t *
 estimate_values(sfft_v1v2_data * data, const int *hits,
                 const int &hits_found, complex_t * x_samp,
                 const int &loops, int n, const int *permute, const int B,
                 const int B2, const Filter & filter,
-                const Filter & filter_Est, int location_loops)
+                const Filter & filter_Est, int location_loops, complex_t * ans)
 {
   unsigned tid = omp_get_thread_num();
   sfft_v1v2_threadlocal_data *tldata = &data->threadlocal_data[tid];
 
-  sfft_output ans;
   real_t **values = tldata->estimate_values_values;
 
   assert((unsigned)hits_found < data->x_samp_size);
@@ -435,8 +434,8 @@ estimate_values(sfft_v1v2_data * data, const int *hits,
 
   Returns a map from coordinates to estimates.
  */
-sfft_output
-outer_loop(sfft_v1v2_data * data, complex_t * origx, int n,
+complex_t *
+outer_loop(sfft_v1v2_data * data, complex_t * ans, complex_t * origx, int n,
            const Filter & filter, const Filter & filter_Est, int B2,
            int num, int B, int W_Comb, int Comb_loops, int loop_threshold,
            int location_loops, int loops)
@@ -533,10 +532,9 @@ outer_loop(sfft_v1v2_data * data, complex_t * origx, int n,
 
   //BEGIN ESTIMATION
   PROFILING_START_SECTION("Estimate Values");
-  sfft_output ans =
-    estimate_values(data, hits, hits_found, x_samp, loops, n, permute,
+  estimate_values(data, hits, hits_found, x_samp, loops, n, permute,
                     B, B2,
-                    filter, filter_Est, location_loops);
+                    filter, filter_Est, location_loops, ans);
   PROFILING_END_SECTION();
 
   return ans;

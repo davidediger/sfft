@@ -32,8 +32,9 @@ int main (void)
   fftw_dft(input_vector, n, x_f, 1);
   printf("new: %p\n", input_vector);
 
-  sfft_output output_vector;
-  sfft_exec(myPlan, input_vector, &output_vector);
+//  sfft_output output_vector;
+  complex_t * output_vector = (complex_t *) calloc (n, sizeof(complex_t));
+  sfft_exec(myPlan, input_vector, output_vector);
   printf("new2: %p\n", input_vector);
 
 //  sfft_free(input_vector);

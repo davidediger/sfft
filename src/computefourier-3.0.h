@@ -35,7 +35,7 @@
 
 //Comments located in the cc file.
 void
-alternate_fft(sfft_v3_data * data, sfft_output * ans, complex_t * origx,
+alternate_fft(sfft_v3_data * data, complex_t * ans, complex_t * origx,
               int n, int k, int W_Man, int Man_loops, int B1, int Wind1,
               int Gauss_loops1, complex_t * filtert1, complex_t * filterf1,
               int B2, int Wind2, int Gauss_loops2, complex_t * filtert2,

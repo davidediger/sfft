@@ -49,11 +49,11 @@ static void sfft_v2_free_plan(sfft_v2_data * data);
 static void sfft_v3_free_plan(sfft_v3_data * data);
 
 static void sfft_v1(unsigned int n, unsigned int k, sfft_v1_data * data,
-                    complex_t * in, sfft_output * out);
+                    complex_t * in, complex_t * out);
 static void sfft_v2(unsigned int n, unsigned int k, sfft_v2_data * data,
-                    complex_t * in, sfft_output * out);
+                    complex_t * in, complex_t * out);
 static void sfft_v3(unsigned int n, unsigned int k, sfft_v3_data * data,
-                    complex_t * in, sfft_output * out);
+                    complex_t * in, complex_t * out);
 
 /** Public API ****************************************************************/
 
@@ -116,7 +116,7 @@ void sfft_free_plan(sfft_plan * plan)
     }
 }
 
-void sfft_exec(sfft_plan * plan, complex_t * in, sfft_output * out)
+void sfft_exec(sfft_plan * plan, complex_t * in, complex_t * out)
 {
   switch (plan->version)
     {
@@ -133,12 +133,12 @@ void sfft_exec(sfft_plan * plan, complex_t * in, sfft_output * out)
 }
 
 void
-sfft_exec_many(sfft_plan * plan, int num, complex_t ** in, sfft_output * out)
+sfft_exec_many(sfft_plan * plan, int num, complex_t ** in, complex_t ** out)
 {
   #pragma omp parallel for
   for (int i = 0; i < num; i++)
     {
-      sfft_exec(plan, in[i], out + i);
+      sfft_exec(plan, in[i], out[i]);
     }
 }
 
@@ -576,9 +576,9 @@ static sfft_v3_data *sfft_v3_make_plan(unsigned int n, unsigned int k,
 
 static void
 sfft_v1(unsigned int n, unsigned int k, sfft_v1_data * data,
-        complex_t * in, sfft_output * out)
+        complex_t * in, complex_t * out)
 {
-  *out = outer_loop(data, in, n, data->filter, data->filter_est,
+  outer_loop(data, out, in, n, data->filter, data->filter_est,
                     data->B_est, data->B_thresh, data->B_loc,
                     data->W_Comb, data->Comb_loops, data->loops_thresh,
                     data->loops_loc, data->loops_loc + data->loops_est);
@@ -586,12 +586,12 @@ sfft_v1(unsigned int n, unsigned int k, sfft_v1_data * data,
 
 static void
 sfft_v2(unsigned int n, unsigned int k, sfft_v2_data * data,
-        complex_t * in, sfft_output * out)
+        complex_t * in, complex_t * out)
 {
   ALGORITHM1 = true;
   WITH_COMB = true;
 
-  *out = outer_loop(data, in, n, data->filter, data->filter_est,
+  outer_loop(data, out, in, n, data->filter, data->filter_est,
                     data->B_est, data->B_thresh, data->B_loc,
                     data->W_Comb, data->Comb_loops, data->loops_thresh,
                     data->loops_loc, data->loops_loc + data->loops_est);
@@ -600,7 +600,7 @@ sfft_v2(unsigned int n, unsigned int k, sfft_v2_data * data,
 
 static void
 sfft_v3(unsigned int n, unsigned int k, sfft_v3_data * data,
-        complex_t * in, sfft_output * out)
+        complex_t * in, complex_t * out)
 {
   alternate_fft(data, out, in, n, k, data->W_Man, data->Man_loops,
                 data->B_g1, data->w_g1, data->Gauss_loops,

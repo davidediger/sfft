@@ -53,7 +53,7 @@ public:
 
   void setup(int argc, char **argv);
   void generate_input();
-  sfft_output run();
+  complex_t * run();
 };
 
 #endif
