@@ -118,6 +118,10 @@ void sfft_free_plan(sfft_plan * plan)
 
 void sfft_exec(sfft_plan * plan, complex_t * in, complex_t * out)
 {
+  for (unsigned int i = 0; i < plan->n; i++) {
+    out[i] = 0;
+  }
+
   switch (plan->version)
     {
     case SFFT_VERSION_1:

@@ -155,6 +155,7 @@ struct sfft_v3_data
 
 /** Public API ****************************************************************/
 
+extern "C" {
 void *sfft_malloc(size_t s);
 void sfft_free(void *p);
 
@@ -162,6 +163,6 @@ sfft_plan *sfft_make_plan(int n, int k, sfft_version version,
                           int fftw_optimization);
 void sfft_free_plan(sfft_plan * plan);
 void sfft_exec(sfft_plan * plan, complex_t * in, complex_t * out);
-void
-sfft_exec_many(sfft_plan * plan, int num, complex_t ** in, complex_t ** out);
+void sfft_exec_many(sfft_plan * plan, int num, complex_t ** in, complex_t ** out);
+}
 #endif
