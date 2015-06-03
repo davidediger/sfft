@@ -1,4 +1,5 @@
 from ctypes import *
+from ctypes.util import find_library
 import numpy as np
 import os
 
@@ -30,7 +31,7 @@ V1_V2_INPUT_PARAMETERS = [
 ]
 
 class sfft:
-  libsfft = cdll.LoadLibrary('./build/libsfft.so')
+  libsfft = cdll.LoadLibrary('libsfft.so')
   sfft_make_plan = libsfft["sfft_make_plan"]
   sfft_make_plan.restype = c_void_p
   sfft_make_plan.argtypes = [c_int, c_int, c_int, c_int]
