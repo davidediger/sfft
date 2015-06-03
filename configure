@@ -31,7 +31,7 @@ all-progress:
 	@$WAF -p build
 
 install:
-	$WAF install --yes;
+	$WAF install
 
 uninstall:
 	$WAF uninstall
