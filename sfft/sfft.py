@@ -81,13 +81,5 @@ class sfft:
     sfft.sfft_exec(self.sfft_plan, a, b)
     return b
 
-#  def __delete__(self):
-#    sfft.sfft_free_plan(self.sfft_plan)
-#    print "destroyed"
-#
-#    sfft.sfft_free(self.input_vector)
-#    print "input vector freed"
-#
-#    sfft.sfft_free(self.output_vector)
-#    print "output vector freed"
-#
+  def __del__(self):
+    sfft.sfft_free_plan(self.sfft_plan)
