@@ -73,7 +73,7 @@ class sfft:
 
     self.sfft_plan = sfft.sfft_make_plan(c_int(length), c_int(sparsity), c_int(version-1), c_int(FFTW_ESTIMATE))
 
-  def doit(self, a):
+  def execute(self, a):
     requires = ['C', 'ALIGNED']
     a = np.asanyarray(a)
     a = np.require(a, np.complex_, requires)

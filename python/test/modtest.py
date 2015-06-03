@@ -13,7 +13,7 @@ for x in freq:
 b = np.fft.ifft(a)
 b = b * n
 myfft = sfft.sfft(n, k, 1)
-result = myfft.doit(b)
+result = myfft.execute(b)
 
 for x in xrange(n):
   if np.absolute(a[x]) > NOISE_THRESHOLD:
